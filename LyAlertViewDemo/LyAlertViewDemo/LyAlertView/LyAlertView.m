@@ -25,8 +25,8 @@
 @property (strong, nonatomic) UIView                *backgroundView;
 @property (nonatomic ,  copy) ClickActionBlock      block;
 
-@property (strong, nonatomic) NSArray *masonryArr;
-@property (strong, nonatomic) NSArray *removeMasonryArr;
+//@property (strong, nonatomic) NSArray *masonryArr;
+//@property (strong, nonatomic) NSArray *removeMasonryArr;
 @end
 
 @implementation LyAlertView
@@ -144,9 +144,38 @@
         }
             break;
         default:{
+            CGFloat h = 44;
+            CGFloat pad = 0;
             for (int i=0; i<self.buttonTitleArray.count; i++) {
-                
+                UIView *topLine = [[UIView alloc]init];
+                topLine.backgroundColor = [UIColor lightGrayColor];
+                [buttonContentView addSubview:topLine];
+                pad = i * h;
+                [topLine mas_makeConstraints:^(MASConstraintMaker *make) {
+                    make.height.equalTo(@0.5);
+                    make.left.right.equalTo(buttonContentView);
+                    make.top.equalTo(@(pad));
+                }];
+                UIButton *button = [[UIButton alloc]init];
+                [buttonContentView addSubview:button];
+                NSString *buttonTitle = self.buttonTitleArray[i];
+                [button setTitle:buttonTitle forState:UIControlStateNormal];
+                button.tag = i;
+                button.backgroundColor = [UIColor clearColor];
+                [button setTitleColor:DEFAULT_THEMECOLOR forState:UIControlStateNormal];
+                [button.titleLabel setFont:[UIFont systemFontOfSize:BUTTON_FONTSIZE]];
+                [button addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
+                [button mas_makeConstraints:^(MASConstraintMaker *make) {
+                    make.left.right.equalTo(buttonContentView);
+                    make.top.equalTo(topLine.mas_bottom);
+                    make.height.equalTo(@(h));
+                }];
+                [self.buttonArray addObject:button];
             }
+            [buttonContentView mas_makeConstraints:^(MASConstraintMaker *make) {
+                make.height.equalTo(@(pad+h));
+                make.bottom.left.right.equalTo(contentView);
+            }];
         }
             break;
     }
@@ -172,16 +201,21 @@
         [contentView addSubview:messageLabel];
         
         [titleLable mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.top.right.equalTo(contentView);
+//            make.left.top.right.equalTo(contentView);
+            make.left.top.equalTo(contentView).offset(8);
+            make.right.equalTo(contentView).offset(-8);
             make.height.greaterThanOrEqualTo(@44);
         }];
         [messageLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.right.equalTo(contentView);
+//            make.left.right.equalTo(contentView);
+            make.left.equalTo(contentView).offset(8);
+            make.right.equalTo(contentView).offset(-8);
             make.top.equalTo(titleLable.mas_bottom);
             make.bottom.equalTo(buttonContentView.mas_top);
             make.height.greaterThanOrEqualTo(@(180-44-44));
         }];
-        self.masonryArr = [contentView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        self.masonryArr =
+        [contentView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(self.mas_left).offset(MARGIN_LEFT_RIGHT);
             make.center.equalTo(self);
             make.top.greaterThanOrEqualTo(self.mas_top).offset(MARGIN_TOP_BOTTOM);
@@ -189,10 +223,13 @@
         }];
     }else{
         [titleLable mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.top.right.equalTo(contentView);
+//            make.left.top.right.equalTo(contentView);
+            make.left.top.equalTo(contentView).offset(8);
+            make.right.equalTo(contentView).offset(-8);
             make.bottom.equalTo(buttonContentView.mas_top);
         }];
-        self.masonryArr = [contentView mas_makeConstraints:^(MASConstraintMaker *make) {
+//        self.masonryArr =
+        [contentView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(self.mas_left).offset(MARGIN_LEFT_RIGHT);
             make.height.greaterThanOrEqualTo(@180);
             make.center.equalTo(self);
@@ -260,7 +297,18 @@
     if (self.block) {
         self.block(self.buttonTitleArray[sender.tag]);
     }
+    if([self.delegate respondsToSelector:@selector(alertView:clickedButtonAtIndex:)]){
+        [self.delegate alertView:self clickedButtonAtIndex:sender.tag];
+    }
     [self dismiss];
+}
+
+-(void)setContentView:(UIView *)contentView{
+    _contentView = contentView;
+    [self addSubview:_contentView];
+    [_contentView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.center.equalTo(self);
+    }];
 }
 
 @end

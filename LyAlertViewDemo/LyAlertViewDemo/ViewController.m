@@ -33,12 +33,20 @@
     [alert show];
 }
 - (IBAction)btn2:(id)sender {
+//    LyAlertView *alert = [[LyAlertView alloc]initWithTitile:@"短信群发" Message:@"• 领秀用户可以通过短信群发功能给自己的粉丝或下单用户推送短信消息，也可以自由输入手机号进行推送；\n\n• 每个新注册用户均赠送50条免费短信；\n\n• 短信条数使用完毕之后可进行通过领秀APP内的短信充值页面进行充值；\n\n• 所购买的短信仅限在领秀App内发送使用；\n\n• 短信内容不得违反相关法律法规，领秀官方对短信使用方式保留最终解释权；" ClickBlock:^(NSString *ButtonTitle) {
+//        
+//    } ButtonTitles:@"确定", nil];
+//    [alert show];
     LyAlertView *alert = [[LyAlertView alloc]initWithTitile:@"两个按键的样式" Message:@"啦啦啦，这是内容，啦啦啦" ClickBlock:^(NSString *ButtonTitle) {
         
     } ButtonTitles:@"取消", @"确定", nil];
     [alert show];
 }
 - (IBAction)btn3:(id)sender {
+    LyAlertView *alert = [[LyAlertView alloc]initWithTitile:@"三个按键的样式" Message:@"啦啦啦，这是内容，啦啦啦" ClickBlock:^(NSString *ButtonTitle) {
+        
+    } ButtonTitles:@"取消1",@"取消2", @"确定", nil];
+    [alert show];
 }
 
 @end

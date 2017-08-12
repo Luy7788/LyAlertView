@@ -11,12 +11,12 @@
 
 typedef void(^ClickActionBlock)(NSString *ButtonTitle);
 
-//@protocol LyAlertViewDelegate <NSObject>
-//- (void)alertView:(LyAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex;
-//@end
+@protocol LyAlertViewDelegate <NSObject>
+- (void)alertView:(LyAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex;
+@end
 
 @interface LyAlertView : UIView
-//@property (weak, nonatomic) id<LyAlertViewDelegate> delegate;
+@property (weak, nonatomic) id<LyAlertViewDelegate> delegate;
 @property (strong, nonatomic) UIView            *contentView;
 @property (strong, nonatomic) UILabel           *titleLabel;
 @property (strong, nonatomic) UILabel           *messageLabel;

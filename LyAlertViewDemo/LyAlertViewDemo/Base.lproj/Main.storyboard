@@ -22,7 +22,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tVS-SP-bXD">
-                                <rect key="frame" x="107" y="248.5" width="160" height="30"/>
+                                <rect key="frame" x="107" y="198.5" width="160" height="30"/>
                                 <color key="backgroundColor" red="0.0" green="1" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="160" id="JbW-Qz-ANr"/>
@@ -36,7 +36,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NJ1-Uu-HKY">
-                                <rect key="frame" x="107" y="318.5" width="160" height="30"/>
+                                <rect key="frame" x="107" y="268.5" width="160" height="30"/>
                                 <color key="backgroundColor" red="0.0" green="1" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="160" id="E7l-1G-ANH"/>
@@ -50,7 +50,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OJb-1k-7ng">
-                                <rect key="frame" x="107" y="386.5" width="160" height="30"/>
+                                <rect key="frame" x="107" y="336.5" width="160" height="30"/>
                                 <color key="backgroundColor" red="0.0" green="1" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="Aqe-ol-wU4"/>
@@ -63,10 +63,26 @@
                                     <action selector="btn3:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7pC-C2-Y6Q"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W91-ZV-sY8">
+                                <rect key="frame" x="107" y="404" width="160" height="30"/>
+                                <color key="backgroundColor" red="0.0" green="1" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="160" id="0Qe-Ek-wUZ"/>
+                                    <constraint firstAttribute="height" constant="30" id="Mh3-mn-i8g"/>
+                                </constraints>
+                                <state key="normal" title="自定义按键样式">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="btn3:" destination="BYZ-38-t0r" eventType="touchUpInside" id="YvA-EZ-GZf"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.53725490200000003" green="0.82352941180000006" blue="0.7725490196" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="NJ1-Uu-HKY" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Mry-ge-ZWC"/>
+                            <constraint firstItem="NJ1-Uu-HKY" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-50" id="Mry-ge-ZWC"/>
+                            <constraint firstItem="W91-ZV-sY8" firstAttribute="top" secondItem="OJb-1k-7ng" secondAttribute="bottom" constant="37.5" id="PPu-A5-55L"/>
+                            <constraint firstItem="W91-ZV-sY8" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="V5O-xG-rBw"/>
                             <constraint firstItem="OJb-1k-7ng" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="XA0-Na-dyy"/>
                             <constraint firstItem="tVS-SP-bXD" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="amp-Ji-s7J"/>
                             <constraint firstItem="OJb-1k-7ng" firstAttribute="top" secondItem="NJ1-Uu-HKY" secondAttribute="bottom" constant="38" id="cyA-nc-SaH"/>
