@@ -7,21 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
-@class LyAlertView;
+//@class LyAlertView; 
+typedef void(^ClickActionBlock)(NSInteger ButtonTag,NSString *ButtonTitle);
 
-typedef void(^ClickActionBlock)(NSString *ButtonTitle);
-
-@protocol LyAlertViewDelegate <NSObject>
-- (void)alertView:(LyAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex;
-@end
 
 @interface LyAlertView : UIView
-@property (weak, nonatomic) id<LyAlertViewDelegate> delegate;
 @property (strong, nonatomic) UIView            *contentView;
 @property (strong, nonatomic) UILabel           *titleLabel;
 @property (strong, nonatomic) UILabel           *messageLabel;
 @property (strong, nonatomic) NSMutableArray    *buttonArray;
-
 
 -(instancetype)initWithTitile:(NSString *)title
                       Message:(NSString *)message

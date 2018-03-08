@@ -150,7 +150,6 @@
 				TargetAttributes = {
 					CE6AADB81F38537000083CD4 = {
 						CreatedOnToolsVersion = 8.2;
-						DevelopmentTeam = EMF42QLSB8;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -361,7 +360,7 @@
 			baseConfigurationReference = 7FC0C29E15E22D97E0339A40 /* Pods-LyAlertViewDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = EMF42QLSB8;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = LyAlertViewDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -375,7 +374,7 @@
 			baseConfigurationReference = F69C6D7DF78154B98FA92E21 /* Pods-LyAlertViewDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = EMF42QLSB8;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = LyAlertViewDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -403,6 +402,7 @@
 				CE6AADD21F38537000083CD4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

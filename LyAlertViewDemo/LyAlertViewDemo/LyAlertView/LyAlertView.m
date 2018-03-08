@@ -25,8 +25,6 @@
 @property (strong, nonatomic) UIView                *backgroundView;
 @property (nonatomic ,  copy) ClickActionBlock      block;
 
-//@property (strong, nonatomic) NSArray *masonryArr;
-//@property (strong, nonatomic) NSArray *removeMasonryArr;
 @end
 
 @implementation LyAlertView
@@ -189,8 +187,9 @@
     titleLable.textAlignment = NSTextAlignmentCenter;
     self.titleLabel = titleLable;
     [contentView addSubview:titleLable];
-    //描述
+    
     if (self.message.length) {
+        //有描述
         UILabel *messageLabel = [[UILabel alloc]init];
         messageLabel.text = self.message;
         messageLabel.font = [UIFont systemFontOfSize:MESSAGE_FONTSIZE];
@@ -201,20 +200,17 @@
         [contentView addSubview:messageLabel];
         
         [titleLable mas_makeConstraints:^(MASConstraintMaker *make) {
-//            make.left.top.right.equalTo(contentView);
             make.left.top.equalTo(contentView).offset(8);
             make.right.equalTo(contentView).offset(-8);
             make.height.greaterThanOrEqualTo(@44);
         }];
         [messageLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-//            make.left.right.equalTo(contentView);
-            make.left.equalTo(contentView).offset(8);
-            make.right.equalTo(contentView).offset(-8);
+            make.left.equalTo(contentView).offset(15);
+            make.right.equalTo(contentView).offset(-15);
             make.top.equalTo(titleLable.mas_bottom);
-            make.bottom.equalTo(buttonContentView.mas_top);
+            make.bottom.equalTo(buttonContentView.mas_top).offset(-15);
             make.height.greaterThanOrEqualTo(@(180-44-44));
         }];
-//        self.masonryArr =
         [contentView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(self.mas_left).offset(MARGIN_LEFT_RIGHT);
             make.center.equalTo(self);
@@ -222,27 +218,19 @@
             make.height.greaterThanOrEqualTo(@180);
         }];
     }else{
+        //没有描述
         [titleLable mas_makeConstraints:^(MASConstraintMaker *make) {
-//            make.left.top.right.equalTo(contentView);
-            make.left.top.equalTo(contentView).offset(8);
+            make.top.equalTo(contentView).offset(20);
+            make.left.equalTo(contentView).offset(8);
             make.right.equalTo(contentView).offset(-8);
             make.bottom.equalTo(buttonContentView.mas_top);
         }];
-//        self.masonryArr =
         [contentView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(self.mas_left).offset(MARGIN_LEFT_RIGHT);
             make.height.greaterThanOrEqualTo(@180);
             make.center.equalTo(self);
         }];
     }
-//    for (MASViewConstraint *constar in self.masonryArr) {
-//        [constar uninstall];
-//    }
-//    self.removeMasonryArr = [contentView mas_remakeConstraints:^(MASConstraintMaker *make) {
-//        make.height.equalTo(@50);
-//        make.width.equalTo(@50);
-//        make.center.equalTo(self);
-//    }];
 }
 
 -(void)show{
@@ -257,16 +245,6 @@
         }
         [subView addSubview:self];
     }
-//    for (MASViewConstraint *constar in self.self.removeMasonryArr) {
-//        [constar uninstall];
-//    }
-//    for (MASViewConstraint *constar in self.masonryArr) {
-//        [constar install];
-//    } 
-//    [UIView animateWithDuration:0.7 delay:0 usingSpringWithDamping:0.5 initialSpringVelocity:2 options:UIViewAnimationOptionCurveEaseOut animations:^{
-//        [self.contentView layoutIfNeeded];
-//    } completion:^(BOOL finished) {
-//    }];
     [self showAlertAnimation];
 }
 
@@ -295,10 +273,7 @@
 
 -(void)buttonClick:(UIButton *)sender{
     if (self.block) {
-        self.block(self.buttonTitleArray[sender.tag]);
-    }
-    if([self.delegate respondsToSelector:@selector(alertView:clickedButtonAtIndex:)]){
-        [self.delegate alertView:self clickedButtonAtIndex:sender.tag];
+        self.block(sender.tag,self.buttonTitleArray[sender.tag]);
     }
     [self dismiss];
 }
